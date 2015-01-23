@@ -1,22 +1,23 @@
-with Ada.Text_IO;use Ada.Text_IO;
-procedure Prac_2 is
-   task Numbers;
-   task body Numbers is
-   begin
-      for i in 1 ..100 loop
-         Put_line(Integer'Image(i));
-      end loop;
-   end Numbers;
+with Ada.Text_IO; use Ada.Text_IO;
+with Ada.Integer_Text_IO;
+procedure P2 is
+	task numbers;
+	task body numbers is
+		X : Integer := 100;
+	begin
+		for I in 0..X loop
+			Ada.Integer_Text_IO.Put(I);
+		end loop;
+	end numbers;
 
-
-   task Hello;
-   task body Hello is
-   begin
-      for i in Character'('a') .. Character'('z') loop
-         Put_Line(Character'Image(i));
-      end loop;
-   end Hello;
-
+	task letters;
+	task body letters is
+	begin
+		for I in Character'('a') .. Character'('z') loop
+			Put_Line(Character'Image(I));
+		end loop;
+	end letters;
 begin
-   null;
-end Prac_2;
+	null;
+end P2;
+

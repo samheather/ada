@@ -1,0 +1,79 @@
+V "GNAT Lib v2013"
+M P W=b
+A --RTS=native
+P ZX
+
+RN
+RV NO_IO
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_TASK_HIERARCHY
+RV NO_TASKING
+RV NO_DEFAULT_INITIALIZATION
+RV SPARK
+RV MAX_TASKS=1+
+
+U p1%b			main.adb		271bf196 NE OO SU
+W ada%s			ada.ads			ada.ali
+W ada.real_time%s	a-reatim.adb		a-reatim.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W system%s		system.ads		system.ali
+W system.parameters%s	s-parame.adb		s-parame.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.task_info%s	s-tasinf.adb		s-tasinf.ali
+W system.tasking%s	s-taskin.adb		s-taskin.ali
+W system.tasking.stages%s  s-tassta.adb		s-tassta.ali
+
+D ada.ads		20130417131023 3ffc8e18
+D a-except.ads		20130417131019 10fcae55
+D a-finali.ads		20130417131020 52ecdc1b
+D a-ioexce.ads		20130417131020 8b9de6cd
+D a-reatim.ads		20130417131021 63f07669
+D a-stream.ads		20130417131021 2ca4ee37
+D a-tags.ads		20130417131022 6c0509d0
+D a-textio.ads		20130417131022 386df5d4
+D a-unccon.ads		20130417131022 f9eb8f06
+D interfac.ads		20130417131027 cb4a8015
+D i-c.ads		20130417131026 5421119b
+D i-cstrea.ads		20130417131026 8128536b
+D main.adb		20150123101855 1f760442
+D system.ads		20130417131036 90249111
+D s-atacco.ads		20130417131028 4c36d12f
+D s-crtl.ads		20130417131029 dfcfca61
+D s-exctab.ads		20130417131029 66e51330
+D s-ficobl.ads		20130417131029 55a71d43
+D s-finmas.ads		20130417131029 b95bb341
+D s-finroo.ads		20130417131029 4ff27390
+D s-linux.ads		20130417131030 70c7cb45
+D s-multip.ads		20130417131030 38ac9f73
+D s-oscons.ads		20130417134817 a4260192
+D s-osinte.ads		20130417131031 938b6b03
+D s-parame.ads		20130417131032 b6e20cc0
+D s-pooglo.ads		20130417131032 542f33d0
+D s-soflin.ads		20130417131032 24c8153c
+D s-stache.ads		20130417131032 596fc1b4
+D s-stausa.ads		20130417131032 017a0a05
+D s-stalib.ads		20130417131032 f78bcf95
+D s-stoele.ads		20130417131032 facd7d98
+D s-stoele.adb		20130417131032 afc5dc80
+D s-stopoo.ads		20130417131032 7b8fbeee
+D s-tasinf.ads		20130417131033 21316953
+D s-taspri.ads		20130417131033 15f617a8
+D s-taprop.ads		20130417131033 1dd2e1b6
+D s-taskin.ads		20130417131033 59e95256
+D s-tassta.ads		20130417131033 70812003
+D s-traent.ads		20130417131033 5221ee41
+D s-unstyp.ads		20130417131034 6ae15c76
+D s-wchcon.ads		20130417131034 bfeb2e3d
+X 1 ada.ads
+16K9*Ada 19e8 13|1r6 1r23
+X 8 a-textio.ads
+49K13*Text_IO 471e16 13|1w10 1r27
+263U14*Put_Line 13|6s5
+X 13 main.adb
+2U11*P1 2b11 10l5 10t7
+3t8 hello 4b13 7l7 7t12
+X 29 s-stausa.ads
+203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
+268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
+

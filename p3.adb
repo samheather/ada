@@ -6,12 +6,24 @@ procedure P3 is
 	--oneSeven : array (0 .. 100) of Integer;
 	pragma Volatile(oneSeven);
 
+  procedure Slow_Down is
+  begin
+     for i in 1 .. 10000 loop
+        null;
+     end loop;
+  end Slow_Down;
+
 	procedure Writers is
 		task ones;
 		task body ones is
 		begin
 			for i in oneSeven'Range loop
-				oneSeven(i) := 1;
+				if oneSeven (i) = 7 then
+               oneSeven (i) := 1;
+            else
+               oneSeven (i) := 1;
+               Slow_Down;
+            end if;
 			end loop;
 		end ones;
 
@@ -19,7 +31,12 @@ procedure P3 is
 		task body sevens is
 		begin
 			for i in oneSeven'Range loop
-				oneSeven(i) := 7;
+				if oneSeven (i) = 1 then
+               oneSeven (i) := 7;
+            else
+               oneSeven (i) := 7;
+               Slow_Down;
+            end if;
 			end loop;
 		end sevens;
 

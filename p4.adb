@@ -1,5 +1,11 @@
 with Ada.Text_IO; use Ada.Text_IO;
-procedure P3 is
+procedure P4 is
+
+	protected type Protected_Integer_Array is
+		entry One;
+		entry Seven;
+	private
+		
 
 	type Integer_Array is array (0 .. 9) of Integer;
 	oneSeven : Integer_Array := (0,0,0,0,0,0,0,0,0,0);
@@ -31,5 +37,5 @@ begin
 	for i in oneSeven'Range loop
 		Put(Integer'Image(oneSeven(i)) & " ");
 	end loop;
-end P3;
+end P4;
 

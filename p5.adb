@@ -8,7 +8,6 @@ procedure P5 is
 	private
 		entry Barrier_Release(Client : Integer);
 		barrierUp : Boolean := True;
-		numberWaiting : Integer := 0;
 	end Controller;
 	
 	protected body Controller is
@@ -17,15 +16,13 @@ procedure P5 is
 			if Client = Releaser then
 				barrierUp := False;
 			else
-				requeue Barrier_Release;
-				numberWaiting := numberWaiting + 1;
+				requeue Barrier_Release with abort;
 			end if;
 		end Barrier_Wait;
 			
 		entry Barrier_Release(Client : Integer) when barrierUp = False is
 			begin
-			numberWaiting := numberWaiting - 1;
-			if numberWaiting = 0 then
+			if Barrier_Release'Count = 0 then
 				barrierUp := True;
 			end if;
 		end Barrier_Release;

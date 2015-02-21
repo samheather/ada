@@ -3,7 +3,7 @@ with Ada.Text_IO; use Ada.Text_IO;
 with System; use System;
 with Ada.Real_Time; use Ada.Real_Time;
 with Ada.Real_Time.Timing_Events; use Ada.Real_Time.Timing_Events;
-procedure p7 is
+procedure p8 is
 	
 	TE : aliased Timing_Event;
 	Period : constant Time_Span := Milliseconds(100);
@@ -20,28 +20,29 @@ procedure p7 is
 	
 	protected body Releaser is
 		entry Wait_Next_Release when Go is
+		begin
 			Go := False;
 		end Wait_Next_Release;
 		
 		procedure Release(Event : in out Timing_Event) is
+		begin
 			Go := True;
 			Next_Time := Next_Time + Period;
-			Event.Set_Handler(Next_Time, Release'Access); ---- What is this access parameter?
+			Event.Set_Handler(Next_Time, Release'Unrestricted_Access); ---- What is this access parameter?
+		end Release;
+	end Releaser;
 
 	task Periodic is
 		pragma Priority(System.Priority'First + 5);
 	end Periodic;
 
 	task body Periodic is
-		Period : constant Time_Span := Milliseconds(100);
-		Next_Time : Time;
 	begin
+		TE.Set_Handler(Start_Time, Releaser.Release'Unrestricted_Access);
 		delay until Start_Time;
 		for I in Integer range 1 .. 10 loop
-			Next_Time := Clock + Period;
+			Releaser.Wait_Next_Release;
 			Put_Line("High priority task running");
-			delay until Next_Time;
-			Next_Time := Next_Time + Period;
 		end loop;
 	end Periodic;
 
@@ -67,5 +68,5 @@ procedure p7 is
 
 begin
 	null;
-end p7;
+end p8;
 

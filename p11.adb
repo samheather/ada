@@ -1,6 +1,8 @@
 pragma Task_Dispatching_Policy(FIFO_Within_Priorities);
 with System; use System;
 with Ada.Text_IO; use Ada.Text_IO;
+with Ada.Real_Time; use Ada.Real_Time;
+with Ada.Execution_Time; use Ada.Execution_Time;
 procedure p11 is
 
 	procedure Finite_Work(Cycles : Integer) is
@@ -21,13 +23,15 @@ procedure p11 is
 	task Start;
 	
 	task body Start is
+		StartTime : CPU_Time;
+		EndTime : CPU_Time;
+		Difference : Time_Span;
 	begin
-		select
-			Interrupt_Controller.Wait_For_Interrupt;
-			Put_Line("Infinite_Work interupted");
-		then abort
-			Infinite_Work;
-		end select;
+		StartTime := Ada.Execution_Time.Clock;
+		Finite_Work(20);
+		EndTime := Ada.Execution_Time.Clock;
+		Difference := EndTime - StartTime;
+		Put_Line("Time taken is: " & Duration'Image (To_Duration (Difference)) & " s");
 	end Start;
 
 begin

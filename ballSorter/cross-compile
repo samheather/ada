@@ -1,0 +1,21 @@
+#/bin/bash
+
+#------------- Set Paths-------------#
+MARTE=/opt/york/cs/pkg/marte-1.9_06Jun2011-chutes-i686-1
+
+GNAT=/opt/york/cs/pkg/gnat-2010-chutes-i686-1
+
+SORTER=/shared/rentedfs/cs-course/arts/gnat-marte/sorter
+
+ADA_INCLUDE_PATH=$MARTE/posix5:$MARTE/kernel:$MARTE/arch:$MARTE/sllRTE:$SORTER
+
+
+#------------ export env -------------#
+export ADA_INCLUDE_PATH
+export PATH=$GNAT/bin:$MARTE/utils:$PATH
+echo $PATH
+
+
+#------------- Compile ---------------#
+$MARTE/utils/mgnatmake -gnatvv -Imarte_src_dirs -I$SORTER "$@"
+chmod go+r "$@"
